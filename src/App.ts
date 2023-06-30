@@ -1,6 +1,9 @@
+/* eslint-disable no-mixed-spaces-and-tabs */
 import swaggerUi from 'swagger-ui-express'
 import { swaggerSpec } from './swagger.conf'
 import express,{Application, Request, Response} from 'express'
+import PacienteRouter from './routes/PacienteRotes'
+
 
 /**
  * Clase principal de la API. Define las rutas de la API
@@ -13,6 +16,7 @@ class App{
 	//Atributos
 	public app:Application
 	private server:any
+	
 
 	/**
      *
@@ -33,24 +37,16 @@ class App{
 			swaggerUi.setup(swaggerSpec)
 		)
 
+		
+
 		this.routes()
 	}
 
 	private routes():void{
         
-		this.app.get(
-			'/',
-			(req:Request, res:Response)=>{
-				res.send('Bienvenidos a la IPS AteneaIPS')
-			}
-		)
-
-		this.app.post(
-			'/paciente',
-			(req:Request, res:Response)=>{
-				res.send('Bienvenidos a typescript')
-			}
-		)
+		this.app.use('/', PacienteRouter)
+		
+		
 	}
 
 	public start():void{

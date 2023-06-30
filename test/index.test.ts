@@ -1,7 +1,7 @@
 //1. Importar las biblotecas
 
 import request from 'supertest'
-import App from './Router'
+import App from '../src/App'
 
 describe(
 	'GET /',
@@ -27,7 +27,7 @@ describe(
 			async ()=>{
 				const res = await request(app.app).get('/')
 				expect (res.statusCode).toEqual(200)
-				expect (res.text).toEqual('Bienvenidos a typescript')
+				expect (res.text).toEqual('Bienvenidos a la IPS AteneaIPS')
 			}
 		)
 	}
